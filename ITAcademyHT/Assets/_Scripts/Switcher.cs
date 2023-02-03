@@ -16,6 +16,7 @@ public class Switcher : MonoBehaviour
 
     void Switch()
     {
+        print("jj");
         if (_objects == null) return;
         if (_currentObj != null) Destroy(_currentObj);
 
