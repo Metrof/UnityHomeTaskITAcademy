@@ -19,7 +19,7 @@ public class ViewChanger : MonoBehaviour
 
     private void SwitchView()
     {
-        _observer.position = _observerPosition;
+        _observer.position = _observablePoint.position + _observerPosition;
         _observer.LookAt(_observablePoint.position);
     }
 }
