@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] float _shotsPower = 20;
+    [SerializeField] float _shotsPower = 10;
     Rigidbody _rb;
 
     private void Awake()

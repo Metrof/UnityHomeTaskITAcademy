@@ -4,19 +4,26 @@ using UnityEngine;
 
 public class RobotMove : MonoBehaviour
 {
-    [SerializeField] float _speed = 3;
-    Rigidbody _body;
+    [SerializeField] float _gravity = -9.81f;
+    [SerializeField] float _speed = 5;
+    [SerializeField] float _rotationSpeed = 5;
 
-    private void Awake()
+    CharacterController _controller;
+    public CharacterController Controller
     {
-        _body = GetComponent<Rigidbody>();
+        get { return _controller ??= GetComponent<CharacterController>(); }
     }
-
     private void Update()
     {
-        Vector3 moveDir = Vector3.zero;
-        if (Input.GetAxis("Horizontal") != 0) moveDir.x = Input.GetAxis("Horizontal") * _speed;
-        if (Input.GetAxis("Vertical") != 0) moveDir.z = Input.GetAxis("Vertical") * _speed;
-        _body.velocity = moveDir;
+        float ver = Input.GetAxis("Vertical");
+        float hor = Input.GetAxis("Horizontal");
+
+        float rotation = Input.GetAxis("Mouse X");
+
+        Vector3 movement = new(hor * _speed, _gravity, ver * _speed);
+        movement *= Time.deltaTime;
+
+        Controller.Move(transform.TransformDirection(movement));
+        Controller.transform.Rotate(Vector3.up, rotation * _rotationSpeed);
     }
 }
