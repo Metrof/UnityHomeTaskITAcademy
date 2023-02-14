@@ -77,4 +77,19 @@ public class ShipSwitcher : MonoBehaviour
         }
         _isSwitching = false;
     }
+    //private void ChangeAngleRotation()
+    //{
+    //    Vector3 dir = _centerWheel.transform.position - _wheel.GetShip(CurrentShip).transform.position;
+    //    print(dir + " Before Normalize");
+    //    dir.Normalize();
+    //    print(dir);
+    //    Vector3 rotMove = Quaternion.Euler(0, _centerWheel.transform.rotation.eulerAngles.y, 0) * dir;
+    //    _switchAngle = Mathf.Atan2(rotMove.x, rotMove.z) * Mathf.Rad2Deg;
+    //}
+    //private Quaternion GetTargetRotation()
+    //{
+    //    print(_switchAngle + " _switchAngle");
+    //    print(CurrentShip + " CurrentShip");
+    //    return Quaternion.Euler(0, _switchAngle, 0);
+    //}
 }
