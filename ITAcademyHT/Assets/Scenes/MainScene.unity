@@ -7713,7 +7713,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 980706805}
-  m_LocalRotation: {x: 0.1601822, y: 0.00034891375, z: -0.000056620884, w: 0.9870874}
+  m_LocalRotation: {x: 0.16018221, y: 0.0003489477, z: -0.00005662641, w: 0.9870874}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -10085,6 +10085,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4032784818553696, guid: 645e0ccb96eef934aa12bd4c02a4bd66, type: 3}
   m_PrefabInstance: {fileID: 1262649895}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1279832956 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1315125114229348, guid: 4c1686a5131ac8b45bfe913f509289c0, type: 3}
+  m_PrefabInstance: {fileID: 1688231258}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1291687868
 GameObject:
@@ -13042,13 +13047,38 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1315125114229348, guid: 4c1686a5131ac8b45bfe913f509289c0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1688231262}
   m_SourcePrefab: {fileID: 100100000, guid: 4c1686a5131ac8b45bfe913f509289c0, type: 3}
 --- !u!4 &1688231259 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4750229036844788, guid: 4c1686a5131ac8b45bfe913f509289c0, type: 3}
   m_PrefabInstance: {fileID: 1688231258}
   m_PrefabAsset: {fileID: 0}
+--- !u!64 &1688231262
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1279832956}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 16c4b1c9bf28bc44eab122106a0e4864, type: 3}
 --- !u!1001 &1693989029
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13462,9 +13492,17 @@ PrefabInstance:
       propertyPath: m_Center.y
       value: 0.95
       objectReference: {fileID: 0}
+    - target: {fileID: 301659108, guid: 1c443c3abb862244aa6185fe28d5f5bb, type: 3}
+      propertyPath: m_MinMoveDistance
+      value: 0.0001
+      objectReference: {fileID: 0}
     - target: {fileID: 301659110, guid: 1c443c3abb862244aa6185fe28d5f5bb, type: 3}
       propertyPath: _mass
-      value: 2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 301659110, guid: 1c443c3abb862244aa6185fe28d5f5bb, type: 3}
+      propertyPath: jumpSpeed
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 301659110, guid: 1c443c3abb862244aa6185fe28d5f5bb, type: 3}
       propertyPath: m_Enabled
@@ -13472,15 +13510,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 301659110, guid: 1c443c3abb862244aa6185fe28d5f5bb, type: 3}
       propertyPath: sprintSpeed
-      value: 2
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 301659110, guid: 1c443c3abb862244aa6185fe28d5f5bb, type: 3}
+      propertyPath: _sprintSpeed
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 301659110, guid: 1c443c3abb862244aa6185fe28d5f5bb, type: 3}
       propertyPath: movementSpeed
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 301659110, guid: 1c443c3abb862244aa6185fe28d5f5bb, type: 3}
       propertyPath: rotationSpeed
-      value: 2
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 301659110, guid: 1c443c3abb862244aa6185fe28d5f5bb, type: 3}
+      propertyPath: _movementSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 301659110, guid: 1c443c3abb862244aa6185fe28d5f5bb, type: 3}
+      propertyPath: animationBlendSpeed
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 301659110, guid: 1c443c3abb862244aa6185fe28d5f5bb, type: 3}
+      propertyPath: rotationSprintSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 301659110, guid: 1c443c3abb862244aa6185fe28d5f5bb, type: 3}
+      propertyPath: _rotationSprintSpeed
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3235965575132470314, guid: 1c443c3abb862244aa6185fe28d5f5bb, type: 3}
       propertyPath: m_RootOrder
@@ -13536,7 +13594,7 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 42d7138a92d74cb429196234c77d51a7, type: 2}
     - target: {fileID: 3235965575142257260, guid: 1c443c3abb862244aa6185fe28d5f5bb, type: 3}
       propertyPath: m_ApplyRootMotion
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

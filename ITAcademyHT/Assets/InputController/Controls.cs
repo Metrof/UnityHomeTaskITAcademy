@@ -53,6 +53,33 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Death"",
+                    ""type"": ""Button"",
+                    ""id"": ""31d788ce-fd93-4565-8df7-0fedfcbb2533"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Respawn"",
+                    ""type"": ""Button"",
+                    ""id"": ""b9183ca0-243e-426b-8df4-e1dcf817c2cf"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RandomAttack"",
+                    ""type"": ""Button"",
+                    ""id"": ""3a165c98-5d13-4ef2-a4e4-33b369ab1cda"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -132,6 +159,39 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c1ecfc94-83ff-4dc4-a4ff-3a59413ac7ef"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Death"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""26c35a0d-8720-4834-be48-6d0388220efd"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Respawn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a175becc-7aa5-4be9-ac67-3bc10e13f91b"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RandomAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -155,6 +215,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         m_Controller_Jump = m_Controller.FindAction("Jump", throwIfNotFound: true);
         m_Controller_Run = m_Controller.FindAction("Run", throwIfNotFound: true);
         m_Controller_Movement = m_Controller.FindAction("Movement", throwIfNotFound: true);
+        m_Controller_Death = m_Controller.FindAction("Death", throwIfNotFound: true);
+        m_Controller_Respawn = m_Controller.FindAction("Respawn", throwIfNotFound: true);
+        m_Controller_RandomAttack = m_Controller.FindAction("RandomAttack", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -217,6 +280,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Controller_Jump;
     private readonly InputAction m_Controller_Run;
     private readonly InputAction m_Controller_Movement;
+    private readonly InputAction m_Controller_Death;
+    private readonly InputAction m_Controller_Respawn;
+    private readonly InputAction m_Controller_RandomAttack;
     public struct ControllerActions
     {
         private @Controls m_Wrapper;
@@ -224,6 +290,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_Controller_Jump;
         public InputAction @Run => m_Wrapper.m_Controller_Run;
         public InputAction @Movement => m_Wrapper.m_Controller_Movement;
+        public InputAction @Death => m_Wrapper.m_Controller_Death;
+        public InputAction @Respawn => m_Wrapper.m_Controller_Respawn;
+        public InputAction @RandomAttack => m_Wrapper.m_Controller_RandomAttack;
         public InputActionMap Get() { return m_Wrapper.m_Controller; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -242,6 +311,15 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @Movement.started -= m_Wrapper.m_ControllerActionsCallbackInterface.OnMovement;
                 @Movement.performed -= m_Wrapper.m_ControllerActionsCallbackInterface.OnMovement;
                 @Movement.canceled -= m_Wrapper.m_ControllerActionsCallbackInterface.OnMovement;
+                @Death.started -= m_Wrapper.m_ControllerActionsCallbackInterface.OnDeath;
+                @Death.performed -= m_Wrapper.m_ControllerActionsCallbackInterface.OnDeath;
+                @Death.canceled -= m_Wrapper.m_ControllerActionsCallbackInterface.OnDeath;
+                @Respawn.started -= m_Wrapper.m_ControllerActionsCallbackInterface.OnRespawn;
+                @Respawn.performed -= m_Wrapper.m_ControllerActionsCallbackInterface.OnRespawn;
+                @Respawn.canceled -= m_Wrapper.m_ControllerActionsCallbackInterface.OnRespawn;
+                @RandomAttack.started -= m_Wrapper.m_ControllerActionsCallbackInterface.OnRandomAttack;
+                @RandomAttack.performed -= m_Wrapper.m_ControllerActionsCallbackInterface.OnRandomAttack;
+                @RandomAttack.canceled -= m_Wrapper.m_ControllerActionsCallbackInterface.OnRandomAttack;
             }
             m_Wrapper.m_ControllerActionsCallbackInterface = instance;
             if (instance != null)
@@ -255,6 +333,15 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @Movement.started += instance.OnMovement;
                 @Movement.performed += instance.OnMovement;
                 @Movement.canceled += instance.OnMovement;
+                @Death.started += instance.OnDeath;
+                @Death.performed += instance.OnDeath;
+                @Death.canceled += instance.OnDeath;
+                @Respawn.started += instance.OnRespawn;
+                @Respawn.performed += instance.OnRespawn;
+                @Respawn.canceled += instance.OnRespawn;
+                @RandomAttack.started += instance.OnRandomAttack;
+                @RandomAttack.performed += instance.OnRandomAttack;
+                @RandomAttack.canceled += instance.OnRandomAttack;
             }
         }
     }
@@ -273,5 +360,8 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnRun(InputAction.CallbackContext context);
         void OnMovement(InputAction.CallbackContext context);
+        void OnDeath(InputAction.CallbackContext context);
+        void OnRespawn(InputAction.CallbackContext context);
+        void OnRandomAttack(InputAction.CallbackContext context);
     }
 }
