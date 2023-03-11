@@ -1,0 +1,46 @@
+{
+    "name": "Controller",
+    "maps": [
+        {
+            "name": "GameMap",
+            "id": "495966a6-c929-4b8d-be5d-2b47a4b5a54f",
+            "actions": [
+                {
+                    "name": "SpawnObject",
+                    "type": "Button",
+                    "id": "90fd2f60-3992-424f-8ded-e616512ed501",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "2e0f31a8-f1e3-4a00-97d2-cafefb8ed1bb",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyBoard",
+                    "action": "SpawnObject",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "KeyBoard",
+            "bindingGroup": "KeyBoard",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}
