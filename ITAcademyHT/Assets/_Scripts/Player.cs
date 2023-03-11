@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
     private Controller _inputController;
     private Vector2 _inputDir;
     private Vector3 _rotatedMovement;
-    public CharacterController Controller { get { return _controller ??= GetComponentInChildren<CharacterController>(); } }
+    public CharacterController Controller { get { return _controller ??= GetComponent<CharacterController>(); } }
     public Camera CharacterCamera { get { return _characterCamera ??= FindObjectOfType<Camera>(); } }
     private void Awake()
     {
@@ -48,6 +48,7 @@ public class Player : MonoBehaviour
         }
         Quaternion currentRotation = Controller.transform.rotation;
         Quaternion targetRotation = Quaternion.Euler(0.0f, _rotationAngle, 0.0f);
+        print(targetRotation.y);
         Controller.transform.rotation = Quaternion.Lerp(currentRotation, targetRotation, _rotationSpeed * Time.deltaTime);
     }
 }
