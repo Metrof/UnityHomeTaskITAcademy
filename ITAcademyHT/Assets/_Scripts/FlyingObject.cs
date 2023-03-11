@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem.HID;
 
 public class FlyingObject : MonoBehaviour
 {
@@ -39,13 +40,9 @@ public class FlyingObject : MonoBehaviour
 
         Direcrion = new Vector3(Random.Range(-_startRandomDir, _startRandomDir), 0, Random.Range(-_startRandomDir, _startRandomDir)).normalized;
     }
-
-    private void Update()
+    private void OnCollisionEnter(Collision collision)
     {
-        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, .4f, LayerMask.GetMask("Default")))
-        {
-            Direcrion = Vector3.Reflect(_direction, hit.normal).normalized;
-            _thisObjectStrategy.ChangeObject();
-        }
+        Direcrion = Vector3.Reflect(_direction, collision.contacts[0].normal).normalized;
+        _thisObjectStrategy.ChangeObject();
     }
 }
