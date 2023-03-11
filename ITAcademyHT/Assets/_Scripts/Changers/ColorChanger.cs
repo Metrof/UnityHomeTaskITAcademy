@@ -4,8 +4,18 @@ using UnityEngine;
 
 public class ColorChanger : IBehaviorStrategy
 {
-    public void ChangeObject(FlyingObject flyingObject)
+    private Renderer _renderer;
+    public Renderer ObjectRenderer { get { return _renderer ??= FlyingObj.GetComponent<Renderer>(); } }
+    public FlyingObject FlyingObj { get; private set; }
+
+    public void AddObjectComponent(FlyingObject flyingObject)
     {
-        flyingObject.ObjectRenderer.material.color = new Color(Random.value, Random.value, Random.value, 1);
+        FlyingObj = flyingObject;
+        _renderer = FlyingObj.GetComponent<Renderer>();
+    }
+
+    public void ChangeObject()
+    {
+        ObjectRenderer.material.color = new Color(Random.value, Random.value, Random.value, 1);
     }
 }

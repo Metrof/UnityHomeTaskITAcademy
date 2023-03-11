@@ -4,8 +4,18 @@ using UnityEngine;
 
 public class FormChanger : IBehaviorStrategy
 {
-    public void ChangeObject(FlyingObject flyingObject)
+    private MeshFilter _meshFilter;
+    public MeshFilter ObjectMeshFilter { get { return _meshFilter ??= FlyingObj.GetComponent<MeshFilter>(); } }
+    public FlyingObject FlyingObj { get; private set; }
+
+    public void AddObjectComponent(FlyingObject flyingObject)
     {
-        flyingObject.ObjectMeshFilter.sharedMesh = flyingObject.Meshes[Random.Range(0, flyingObject.Meshes.Length)];
+        FlyingObj = flyingObject;
+        _meshFilter = FlyingObj.GetComponent<MeshFilter>();
+    }
+
+    public void ChangeObject()
+    {
+        ObjectMeshFilter.sharedMesh = FlyingObj.Meshes[Random.Range(0, FlyingObj.Meshes.Length)];
     }
 }

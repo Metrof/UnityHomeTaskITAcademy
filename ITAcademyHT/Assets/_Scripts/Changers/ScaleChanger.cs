@@ -4,8 +4,18 @@ using UnityEngine;
 
 public class ScaleChanger : IBehaviorStrategy
 {
-    public void ChangeObject(FlyingObject flyingObject)
+    private readonly float _minScale = 0.2f;
+    private readonly float _maxScale = 0.7f;
+
+    public FlyingObject FlyingObj { get; private set; }
+
+    public void AddObjectComponent(FlyingObject flyingObject)
     {
-        flyingObject.transform.localScale = Vector3.one * Random.Range(0.2f, 0.7f);
+        FlyingObj = flyingObject;
+    }
+
+    public void ChangeObject()
+    {
+        FlyingObj.transform.localScale = Vector3.one * Random.Range(_minScale, _maxScale);
     }
 }

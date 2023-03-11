@@ -4,5 +4,7 @@ using UnityEngine;
 
 public interface IBehaviorStrategy 
 {
-    void ChangeObject(FlyingObject flyingObject);
+    FlyingObject FlyingObj { get; }
+    void AddObjectComponent(FlyingObject flyingObject);
+    void ChangeObject();
 }
