@@ -42,7 +42,10 @@ public class FlyingObject : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        Direcrion = Vector3.Reflect(_direction, collision.contacts[0].normal).normalized;
-        _thisObjectStrategy.ChangeObject();
+        if (collision.collider.CompareTag("Wall"))
+        {
+            Direcrion = Vector3.Reflect(_direction, collision.contacts[0].normal).normalized;
+            _thisObjectStrategy.ChangeObject();
+        }
     }
 }
