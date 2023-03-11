@@ -16,6 +16,9 @@ public class FormChanger : IBehaviorStrategy
 
     public void ChangeObject()
     {
-        ObjectMeshFilter.sharedMesh = FlyingObj.Meshes[Random.Range(0, FlyingObj.Meshes.Length)];
+        if (FlyingObj.Meshes.Length > 0)
+        {
+            ObjectMeshFilter.sharedMesh = FlyingObj.Meshes[Random.Range(0, FlyingObj.Meshes.Length)];
+        }
     }
 }
