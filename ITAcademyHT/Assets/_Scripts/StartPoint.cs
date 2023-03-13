@@ -7,7 +7,7 @@ public class StartPoint : MonoBehaviour
 {
     [SerializeField] FlyingObject _flyingObjectPref;
 
-    private readonly IProjectile[] _strategies = new IProjectile[3] { new ScaleChanger(), new ColorChanger(), new FormChanger() };
+    private readonly IObjectChanger[] _strategies = new IObjectChanger[3] { new ScaleChanger(), new ColorChanger(), new FormChanger() };
     private Controller _controller;
 
     private void Awake()

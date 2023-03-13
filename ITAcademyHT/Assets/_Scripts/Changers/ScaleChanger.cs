@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScaleChanger : IProjectile
+public class ScaleChanger : IObjectChanger
 {
     private readonly float _minScale = 0.2f;
     private readonly float _maxScale = 0.7f;

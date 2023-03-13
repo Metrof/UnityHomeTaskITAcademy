@@ -11,7 +11,7 @@ public class FlyingObject : MonoBehaviour
 
     private Rigidbody _rb;
     private Vector3 _direction;
-    private IProjectile _thisObjectStrategy;
+    private IObjectChanger _thisObjectStrategy;
 
     public Mesh[] Meshes { get { return _meshes; } }
 
@@ -44,7 +44,7 @@ public class FlyingObject : MonoBehaviour
         }
     }
 
-    public void SetStrategy(IProjectile strategy)
+    public void SetStrategy(IObjectChanger strategy)
     {
         _thisObjectStrategy = strategy;
         _thisObjectStrategy.AddObjectComponent(this);
