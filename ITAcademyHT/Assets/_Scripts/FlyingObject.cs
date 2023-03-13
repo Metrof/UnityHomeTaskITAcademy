@@ -11,8 +11,6 @@ public class FlyingObject : MonoBehaviour
 
     private Rigidbody _rb;
     private Vector3 _direction;
-
-    private readonly IProjectile[] _strategies = new IProjectile[3] { new ScaleChanger(), new ColorChanger(), new FormChanger() };
     private IProjectile _thisObjectStrategy;
 
     public Mesh[] Meshes { get { return _meshes; } }
@@ -35,9 +33,6 @@ public class FlyingObject : MonoBehaviour
 
     private void Start()
     {
-        _thisObjectStrategy = _strategies[Random.Range(0, _strategies.Length)];
-        _thisObjectStrategy.AddObjectComponent(this);
-
         Direcrion = new Vector3(Random.Range(-_startRandomDir, _startRandomDir), 0, Random.Range(-_startRandomDir, _startRandomDir)).normalized;
     }
     private void OnCollisionEnter(Collision collision)
@@ -45,7 +40,13 @@ public class FlyingObject : MonoBehaviour
         if (collision.collider.CompareTag("Wall"))
         {
             Direcrion = Vector3.Reflect(_direction, collision.contacts[0].normal).normalized;
-            _thisObjectStrategy.ChangeObject();
+            _thisObjectStrategy?.ChangeObject();
         }
+    }
+
+    public void SetStrategy(IProjectile strategy)
+    {
+        _thisObjectStrategy = strategy;
+        _thisObjectStrategy.AddObjectComponent(this);
     }
 }

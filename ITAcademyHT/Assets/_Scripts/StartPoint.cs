@@ -7,6 +7,7 @@ public class StartPoint : MonoBehaviour
 {
     [SerializeField] FlyingObject _flyingObjectPref;
 
+    private readonly IProjectile[] _strategies = new IProjectile[3] { new ScaleChanger(), new ColorChanger(), new FormChanger() };
     private Controller _controller;
 
     private void Awake()
@@ -27,6 +28,6 @@ public class StartPoint : MonoBehaviour
 
     private void SpawnObject(InputAction.CallbackContext obj)
     {
-        Instantiate(_flyingObjectPref, transform.position, Quaternion.identity);
+        Instantiate(_flyingObjectPref, transform.position, Quaternion.identity).SetStrategy(_strategies[Random.Range(0, _strategies.Length)]);
     }
 }
