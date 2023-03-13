@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ColorChanger : IBehaviorStrategy
+public class ColorChanger : IProjectile
 {
     private Renderer _renderer;
     public Renderer ObjectRenderer { get { return _renderer ??= FlyingObj.GetComponent<Renderer>(); } }

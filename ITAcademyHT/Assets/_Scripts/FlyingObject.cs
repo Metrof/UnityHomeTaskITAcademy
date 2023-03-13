@@ -12,8 +12,8 @@ public class FlyingObject : MonoBehaviour
     private Rigidbody _rb;
     private Vector3 _direction;
 
-    private readonly IBehaviorStrategy[] _strategies = new IBehaviorStrategy[3] { new ScaleChanger(), new ColorChanger(), new FormChanger() };
-    private IBehaviorStrategy _thisObjectStrategy;
+    private readonly IProjectile[] _strategies = new IProjectile[3] { new ScaleChanger(), new ColorChanger(), new FormChanger() };
+    private IProjectile _thisObjectStrategy;
 
     public Mesh[] Meshes { get { return _meshes; } }
 

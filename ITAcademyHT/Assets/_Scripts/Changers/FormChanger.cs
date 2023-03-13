@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FormChanger : IBehaviorStrategy
+public class FormChanger : IProjectile
 {
     private MeshFilter _meshFilter;
     public MeshFilter ObjectMeshFilter { get { return _meshFilter ??= FlyingObj.GetComponent<MeshFilter>(); } }
