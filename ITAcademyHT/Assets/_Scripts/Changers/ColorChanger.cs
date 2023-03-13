@@ -8,12 +8,11 @@ public class ColorChanger : IObjectChanger
     public Renderer ObjectRenderer { get { return _renderer ??= FlyingObj.GetComponent<Renderer>(); } }
     public FlyingObject FlyingObj { get; private set; }
 
-    public void AddObjectComponent(FlyingObject flyingObject)
+    public ColorChanger(FlyingObject flyingObj)
     {
-        FlyingObj = flyingObject;
+        FlyingObj = flyingObj;
         _renderer = FlyingObj.GetComponent<Renderer>();
     }
-
     public void ChangeObject()
     {
         ObjectRenderer.material.color = new Color(Random.value, Random.value, Random.value, 1);

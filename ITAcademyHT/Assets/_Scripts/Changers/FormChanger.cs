@@ -5,20 +5,23 @@ using UnityEngine;
 public class FormChanger : IObjectChanger
 {
     private MeshFilter _meshFilter;
+    private Mesh[] _meshes;
+
     public MeshFilter ObjectMeshFilter { get { return _meshFilter ??= FlyingObj.GetComponent<MeshFilter>(); } }
     public FlyingObject FlyingObj { get; private set; }
 
-    public void AddObjectComponent(FlyingObject flyingObject)
+    public FormChanger(FlyingObject flyingObj, Mesh[] meshes)
     {
-        FlyingObj = flyingObject;
+        FlyingObj = flyingObj;
+        _meshes = meshes;
         _meshFilter = FlyingObj.GetComponent<MeshFilter>();
     }
 
     public void ChangeObject()
     {
-        if (FlyingObj.Meshes.Length > 0)
+        if (_meshes.Length > 0)
         {
-            ObjectMeshFilter.sharedMesh = FlyingObj.Meshes[Random.Range(0, FlyingObj.Meshes.Length)];
+            ObjectMeshFilter.sharedMesh = _meshes[Random.Range(0, _meshes.Length)];
         }
     }
 }

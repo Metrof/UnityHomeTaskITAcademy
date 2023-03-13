@@ -5,6 +5,5 @@ using UnityEngine;
 public interface IObjectChanger 
 {
     FlyingObject FlyingObj { get; }
-    void AddObjectComponent(FlyingObject flyingObject);
     void ChangeObject();
 }

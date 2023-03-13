@@ -1,19 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem.HID;
 
 public class FlyingObject : MonoBehaviour
 {
     [SerializeField] float _flyingSpeed = 6;
     [SerializeField] float _startRandomDir = 5;
-    [SerializeField] Mesh[] _meshes;
 
     private Rigidbody _rb;
     private Vector3 _direction;
     private IObjectChanger _thisObjectStrategy;
-
-    public Mesh[] Meshes { get { return _meshes; } }
 
     private Vector3 Direcrion
     {
@@ -47,6 +41,5 @@ public class FlyingObject : MonoBehaviour
     public void SetStrategy(IObjectChanger strategy)
     {
         _thisObjectStrategy = strategy;
-        _thisObjectStrategy.AddObjectComponent(this);
     }
 }

@@ -900,6 +900,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _flyingObjectPref: {fileID: 4121869799884934965, guid: a3b61761d34d1ea48ae5fb9aa7a42c4c, type: 3}
+  _minScale: 0.2
+  _maxScale: 0.7
+  _meshes:
+  - {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!4 &2136888115
 Transform:
   m_ObjectHideFlags: 0

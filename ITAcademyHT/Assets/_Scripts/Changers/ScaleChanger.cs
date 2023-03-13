@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class ScaleChanger : IObjectChanger
 {
-    private readonly float _minScale = 0.2f;
-    private readonly float _maxScale = 0.7f;
+    private readonly float _minScale;
+    private readonly float _maxScale;
 
     public FlyingObject FlyingObj { get; private set; }
 
-    public void AddObjectComponent(FlyingObject flyingObject)
+    public ScaleChanger(FlyingObject flyingObj, float minScale, float maxScale)
     {
-        FlyingObj = flyingObject;
+        FlyingObj = flyingObj;
+        _minScale = minScale;
+        _maxScale = maxScale;
     }
 
     public void ChangeObject()
