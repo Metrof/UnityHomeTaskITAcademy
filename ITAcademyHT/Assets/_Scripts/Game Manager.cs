@@ -64,6 +64,7 @@ public class GameManager : MonoBehaviour
             _storeys[i].ChangeStoreyNum(_storeys[i].StoreyNum + direction, firstSprite, secondSprite);
         }
         _player.transform.Translate(0f, _oneStoreyHeight * -direction, 0f, Space.World);
+        Physics.SyncTransforms();
 
         _horrorAudioSource.PlayOneShot(_horrorClips[Random.Range(0, _horrorClips.Length)]);
     }
