@@ -63,9 +63,7 @@ public class GameManager : MonoBehaviour
             Sprite secondSprite = _numberSprites[Mathf.Clamp(Mathf.Abs(_storeys[i].StoreyNum + direction) % 10, 0, 9)];
             _storeys[i].ChangeStoreyNum(_storeys[i].StoreyNum + direction, firstSprite, secondSprite);
         }
-        _player.Controller.enabled = false;
         _player.transform.Translate(0f, _oneStoreyHeight * -direction, 0f, Space.World);
-        _player.Controller.enabled = true;
 
         _horrorAudioSource.PlayOneShot(_horrorClips[Random.Range(0, _horrorClips.Length)]);
     }
