@@ -1,0 +1,46 @@
+{
+    "name": "Controller",
+    "maps": [
+        {
+            "name": "Game",
+            "id": "a2cb01e1-4b62-4506-9f1d-0c0da96164b3",
+            "actions": [
+                {
+                    "name": "PutBlock",
+                    "type": "Button",
+                    "id": "8a260778-f72f-4ffe-9eac-d7451e216657",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "0e7ede78-6e72-43de-87d2-183a3cfe51c1",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyBoard",
+                    "action": "PutBlock",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "KeyBoard",
+            "bindingGroup": "KeyBoard",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}
