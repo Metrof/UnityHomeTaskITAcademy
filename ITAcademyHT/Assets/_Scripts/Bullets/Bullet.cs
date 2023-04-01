@@ -5,15 +5,42 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] float _shotsPower = 10;
-    Rigidbody _rb;
+    [SerializeField] float _bulletLifeTime = 3;
 
-    private void Awake()
+    Rigidbody _rb;
+    ProjectileParticles _manager;
+
+    private Vector3 _pullPosition;
+
+    public virtual void Awake()
     {
         _rb = GetComponent<Rigidbody>();
-        Destroy(gameObject, 7);
+        _manager = GetComponent<ProjectileParticles>();
     }
-    public virtual void Shot(Vector3 weaponForward)
+    public virtual void Shot(Vector3 weaponForward, Vector3 shotPos)
     {
+        gameObject.SetActive(true);
+        transform.position = shotPos;
         _rb.AddForce(weaponForward * _shotsPower, ForceMode.Impulse);
+        StartCoroutine(OnBulletReturn());
+    }
+    public void SetDefoltPos(Vector3 defoltPos)
+    {
+        _pullPosition = defoltPos;
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        _manager.Ricochet();
+    }
+    protected IEnumerator OnBulletReturn()
+    {
+        yield return new WaitForSeconds(_bulletLifeTime);
+        Return();
+    }
+    protected void Return()
+    {
+        transform.position = _pullPosition;
+        _rb.velocity = Vector3.zero;
+        gameObject.SetActive(false);
     }
 }

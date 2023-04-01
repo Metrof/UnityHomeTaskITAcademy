@@ -6,7 +6,7 @@ public class RobotShot : MonoBehaviour
 {
     [SerializeField] Transform _bulletParent;
 
-    Bullet _bulletType;
+    Stand _bulletType;
     Renderer _renderer;
 
     private void Awake()
@@ -18,13 +18,13 @@ public class RobotShot : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && _bulletType != null)
         {
-            Bullet bullet = Instantiate(_bulletType, transform.position, Quaternion.identity, _bulletParent);
-            bullet.Shot(transform.forward);
+            Bullet bullet = _bulletType.GetBullet();
+            bullet.Shot(transform.forward, transform.position);
         }
     }
-    public void SetBulletType(Bullet bullet, Color bulletColor)
+    public void SetBulletType(Stand bulletType, Color bulletColor)
     {
-        _bulletType = bullet;
+        _bulletType = bulletType;
         _renderer.material.color = bulletColor;
     }
 }

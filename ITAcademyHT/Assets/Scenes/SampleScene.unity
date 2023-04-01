@@ -956,6 +956,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bulletType: {fileID: 5851718111921370931, guid: 18b0be15cde81f545bb87046ebaacc94, type: 3}
+  _pullLenght: 20
 --- !u!1 &249686624
 GameObject:
   m_ObjectHideFlags: 0
@@ -1733,6 +1734,7 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
+  - component: {fileID: 963194229}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1814,6 +1816,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 38.66, y: 90, z: 0}
+--- !u!114 &963194229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd013d0cccad9dc4fb87f5d8b8d1fecf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionPref: {fileID: 4192240054384556284, guid: 6d464bd9e9ee2464892a49d665657ad2, type: 3}
+  _pullLenght: 20
 --- !u!1 &1020568008
 GameObject:
   m_ObjectHideFlags: 0
@@ -2782,6 +2798,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bulletType: {fileID: 1797144078283609968, guid: 2abd2364bc4d9c64cae6696935b939a3, type: 3}
+  _pullLenght: 20
 --- !u!1 &1453688925
 GameObject:
   m_ObjectHideFlags: 0
@@ -3130,3 +3147,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bulletType: {fileID: 8245632419873254364, guid: db6ad8daaf0cbe04b85f575a718f2118, type: 3}
+  _pullLenght: 20
