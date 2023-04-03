@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CubeGenerator : MonoBehaviour
 {
-    Mesh mesh;
+    Mesh _mesh;
 
     private void Start()
     {
@@ -13,15 +13,17 @@ public class CubeGenerator : MonoBehaviour
     }
     public GameObject CreateCube(Vector3 size, Material material)
     {
-        mesh = new Mesh();
+        _mesh = new Mesh();
         GameObject cube = Instantiate(new GameObject());
         MeshFilter filter =  cube.AddComponent<MeshFilter>();
         cube.AddComponent<MeshRenderer>().material = material;
 
-        filter.mesh = mesh;
-        mesh.vertices = GetVertices(size);
-        mesh.triangles = GetTriangleMap();
-        mesh.RecalculateBounds();
+        filter.mesh = _mesh;
+        _mesh.vertices = GetVertices(size);
+        _mesh.triangles = GetTriangleMap();
+        _mesh.RecalculateBounds();
+        _mesh.RecalculateNormals();
+        _mesh.RecalculateTangents();
 
         return cube;
     }
