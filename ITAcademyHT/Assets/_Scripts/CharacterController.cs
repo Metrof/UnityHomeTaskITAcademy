@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Playables;
 
 [RequireComponent(typeof(CharacterController))]
 public class Character : MonoBehaviour
@@ -12,6 +13,7 @@ public class Character : MonoBehaviour
     [SerializeField] private float _rotationSpeed = 4;
     [SerializeField] private float _rotationSprintSpeed = 10;
     [SerializeField] private float _animationBlendSpeed = 0.2f;
+    [SerializeField] private PlayableDirector _deathPlayableDirector;
 
     private InputAction _runInput;
     private InputAction _jumpInput;
@@ -68,8 +70,6 @@ public class Character : MonoBehaviour
 
     private void Start()
     {
-        CharacterAnimator.Play("Spawn");
-
         _movementSM = new StateMachine();
         _jumping = new JumpingState(this, _movementSM);
         _moving = new MoveState(this, _movementSM);
@@ -110,18 +110,29 @@ public class Character : MonoBehaviour
     public void EndOfSpawn() => StateMachine.CurrentState.SwitchUnmoveble(false);
     private void Death()
     {
+        if (isDeath) return;
         StateMachine.CurrentState.SwitchUnmoveble(true);
         isDeath = true;
         CharacterAnimator.SetTrigger("Death");
+        _deathPlayableDirector.Play();
     }
     private void Respawn()
     {
         if (!isDeath) return;
         isDeath = false;
         CharacterAnimator.SetTrigger("Respawn");
+        _deathPlayableDirector.Stop();
     }
     public void EndOfAttack()
     {
         _attacking.CombinationEnd();
+    }
+    public void StartCutscene()
+    {
+        _controller.Disable();
+    }
+    public void CutsceneEnd()
+    {
+        _controller.Enable();
     }
 }

@@ -67,13 +67,18 @@ public class MoveState : State
 
         character.Controller.Move(down * Time.deltaTime + hor);
 
+        Quaternion currentRotation = character.Controller.transform.rotation;
+        Quaternion targetRotation;
         if (_moveDir.sqrMagnitude > 0)
         {
             _rotationAngle = Mathf.Atan2(_rotatedMovement.x, _rotatedMovement.z) * Mathf.Rad2Deg;
+            targetRotation = Quaternion.Euler(0.0f, _rotationAngle, 0.0f);
+        }
+        else
+        {
+            targetRotation = currentRotation;
         }
         character.CharacterAnimator.SetFloat("Speed", Mathf.Lerp(character.CharacterAnimator.GetFloat("Speed"), TargetAnimationSpeed, _animationBlendSpeed));
-        Quaternion currentRotation = character.Controller.transform.rotation;
-        Quaternion targetRotation = Quaternion.Euler(0.0f, _rotationAngle, 0.0f);
 
         if (!_isUnmoveble)
         {
